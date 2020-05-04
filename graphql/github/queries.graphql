@@ -1,0 +1,23 @@
+query MyFirstRepositories {
+  user(login: "miking-the-viking") {
+    repositories(first: 10) {
+      totalCount
+      edges {
+        cursor
+        node {
+          createdAt
+          description
+          id
+          name
+          url
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}
