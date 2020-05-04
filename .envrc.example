@@ -1,5 +1,6 @@
 # To communicate with GitHub
 export GITHUB_API_TOKEN=asdfasdfasdfasdffds
+export NX_GITHUB_API_TOKEN=$GITHUB_API_TOKEN
 
 # Database
 export DB_USER=dbuser
