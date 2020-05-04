@@ -25,6 +25,9 @@
     "web-ui-e2e": {
       "tags": [],
       "implicitDependencies": ["web-ui"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
