@@ -30,7 +30,8 @@
     "hasura:console": "cd hasura && hasura console",
     "hasura:generate": "graphql-codegen --config ./graphql/hasura/codegen.hasura.yml",
     "github:generate": "graphql-codegen --config ./graphql/github/codegen.yml",
-    "storybook": "nx run ui-components:storybook"
+    "storybook": "nx run ui-components:storybook",
+    "test:web-ui:coverage": "nx test web-ui --code-coverage --no-cache"
   },
   "private": true,
   "dependencies": {
