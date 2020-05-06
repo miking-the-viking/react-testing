@@ -4,6 +4,6 @@ COPY . /e2e
 
 WORKDIR /e2e
 
-RUN yarn install
+RUN yarn install --silent
 
-ENTRYPOINT ["yarn", "e2e", "web-ui-e2e"]
+ENTRYPOINT ["yarn", "e2e", "web-ui-e2e", "--headless"]
