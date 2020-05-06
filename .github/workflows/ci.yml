@@ -28,10 +28,6 @@ jobs:
       # - name: Lint Project
       #   run: yarn lint web-ui
 
-      # - uses: ziishaned/jest-reporter-action@v0.0.1
-      #   with:
-      #     github-token: ${{ secrets.NX_GITHUB_API_TOKEN }}
-      #     test-command: "yarn test:web-ui:coverage"
       - name: Run Tests
         env:
           NX_GITHUB_API_TOKEN: ${{ secrets.NX_GITHUB_API_TOKEN}}
