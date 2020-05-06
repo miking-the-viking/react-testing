@@ -2,6 +2,10 @@
   "name": "react-testing",
   "version": "0.0.0",
   "license": "MIT",
+  "nyc": {
+    "temp-dir": "./apps/web-ui-e2e/.nyc_output",
+    "report": "lcov"
+  },
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
@@ -72,6 +76,7 @@
   "devDependencies": {
     "@babel/core": "7.8.3",
     "@babel/preset-typescript": "^7.9.0",
+    "@cypress/code-coverage": "^3.7.0",
     "@graphql-codegen/cli": "^1.13.2",
     "@graphql-codegen/introspection": "^1.13.2",
     "@graphql-codegen/typescript": "^1.13.2",
@@ -102,6 +107,7 @@
     "@typescript-eslint/eslint-plugin": "2.19.2",
     "@typescript-eslint/parser": "2.19.2",
     "babel-loader": "8.0.6",
+    "babel-plugin-istanbul": "^6.0.0",
     "cypress": "^4.1.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
@@ -111,7 +117,9 @@
     "eslint-plugin-react": "7.17.0",
     "eslint-plugin-react-hooks": "2.3.0",
     "hasura-cli": "^1.2.0",
+    "istanbul-lib-coverage": "^3.0.0",
     "jest": "25.2.3",
+    "nyc": "^15.0.1",
     "prettier": "1.19.1",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
