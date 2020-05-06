@@ -5,5 +5,13 @@ module.exports = {
   },
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html', 'lcov']
+  coverageReporters: ['html', 'lcov', 'text'],
+  coverageThreshold: {
+    global: {
+      branches: 95,
+      functions: 95,
+      lines: 95,
+      statements: -10 // swolverine
+    }
+  }
 };
