@@ -16,7 +16,10 @@ const { preprocessTypescript } = require('@nrwl/cypress/plugins/preprocessor');
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+  config.env.NX_GITHUB_API_TOKEN = process.env.NX_GITHUB_API_TOKEN;
 
   // Preprocess Typescript file using Nx helper
   on('file:preprocessor', preprocessTypescript(config));
+
+  return config;
 };

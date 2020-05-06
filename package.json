@@ -70,7 +70,6 @@
     "unfetch": "^4.1.0"
   },
   "devDependencies": {
-    "@angular/forms": "*",
     "@babel/core": "7.8.3",
     "@babel/preset-typescript": "^7.9.0",
     "@graphql-codegen/cli": "^1.13.2",
@@ -91,7 +90,6 @@
     "@nrwl/web": "9.2.3",
     "@nrwl/workspace": "9.2.3",
     "@storybook/addon-knobs": "5.3.9",
-    "@storybook/angular": "5.3.9",
     "@storybook/core": "^5.3.18",
     "@storybook/react": "5.3.9",
     "@testing-library/react": "9.4.0",

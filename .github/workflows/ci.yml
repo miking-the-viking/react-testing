@@ -33,6 +33,11 @@ jobs:
           NX_GITHUB_API_TOKEN: ${{ secrets.NX_GITHUB_API_TOKEN}}
         run: yarn test:web-ui:coverage
 
+      - name: Run e2e Tests
+        env:
+          NX_GITHUB_API_TOKEN: ${{ secrets.NX_GITHUB_API_TOKEN}}
+        run: yarn e2e web-ui-e2e
+
       - uses: romeovs/lcov-reporter-action@v0.2.16
         with:
           github-token: ${{ secrets.NX_GITHUB_API_TOKEN }}
