@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   pull_request:
-    branches: [ master, develop ]
+    branches: [master, develop]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,13 +17,18 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    - uses: bahmutov/npm-install@v1
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
+      - name: Generate GitHub SDK
+        env:
+          GITHUB_API_TOKEN: ${{ secrets.NX_GITHUB_API_TOKEN}}
+        run: yarn github:generate
 
-    - name: Lint Project
-      run: yarn lint web-ui
+      # - name: Lint Project
+      #   run: yarn lint web-ui
 
-    - name: Run Tests
-      run: yarn test web-ui
-
+      - name: Run Tests
+        env:
+          NX_GITHUB_API_TOKEN: ${{ secrets.NX_GITHUB_API_TOKEN}}
+        run: yarn test web-ui

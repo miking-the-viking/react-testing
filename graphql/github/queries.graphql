@@ -21,3 +21,12 @@ query MyFirstRepositories {
     }
   }
 }
+
+query RateLimit {
+  rateLimit {
+    limit
+    cost
+    nodeCount
+    remaining
+  }
+}
