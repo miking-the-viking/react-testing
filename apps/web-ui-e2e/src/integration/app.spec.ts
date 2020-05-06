@@ -11,7 +11,7 @@ describe('web-ui', () => {
     cy.url().should('include', 'enter-token');
   });
 
-  it.only('should redirect to repos page after sumbitting a valid token', () => {
+  it('should redirect to repos page after sumbitting a valid token', () => {
     cy.visit('/enter-token');
     cy.get('input#enter_token').type(NX_GITHUB_API_TOKEN);
     cy.contains('Submit').click();

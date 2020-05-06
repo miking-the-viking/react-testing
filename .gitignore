@@ -2,7 +2,8 @@
 
 .envrc
 apps/web-ui/src/generated/github.graphql.ts
-
+apps/web-ui-e2e/.nyc_output
+apps/web-ui-e2e/coverage
 # compiled output
 /dist
 /tmp

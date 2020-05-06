@@ -18,8 +18,15 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
   config.env.NX_GITHUB_API_TOKEN = process.env.NX_GITHUB_API_TOKEN;
 
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  require('@cypress/code-coverage/task')(on, config);
+  
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    on('file:preprocessor', require('@cypress/code-coverage/use-babelrc'));
   // Preprocess Typescript file using Nx helper
   on('file:preprocessor', preprocessTypescript(config));
+
+
 
   return config;
 };
