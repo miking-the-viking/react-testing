@@ -1,0 +1,6 @@
+{
+  "command": "e2e",
+  "results": {
+    "web-ui-e2e": false
+  }
+}

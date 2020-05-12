@@ -1,13 +1,20 @@
-import { getGreeting } from '../support/app.po';
-
 describe('web-ui', () => {
+  let NX_GITHUB_API_TOKEN;
+
+  before(() => {
+    NX_GITHUB_API_TOKEN = Cypress.env('NX_GITHUB_API_TOKEN');
+  });
+
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('should redirect to the enter token page', () => {
+    cy.url().should('include', 'enter-token');
+  });
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to web-ui!');
+  it('should redirect to repos page after sumbitting a valid token', () => {
+    cy.visit('/enter-token');
+    cy.get('input#enter_token').type(NX_GITHUB_API_TOKEN);
+    cy.contains('Submit').click();
+    cy.url().should('include', 'repositories');
   });
 });

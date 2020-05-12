@@ -1,76 +1,80 @@
-# ReactTesting
+# React Testing
 
-This project was generated using [Nx](https://nx.dev).
+![CI](https://github.com/miking-the-viking/react-testing/workflows/CI/badge.svg)
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+---
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+## What it is?
 
-## Adding capabilities to your workspace
+This repository was setup to be an exemplary referential project for an Nx React Application. It is built using the best of modern practices and fully embraces the GitHub ecosystem utilizing GitHub Actions as the driving agent for achieving Continuous Integration.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+The project is scaffolded as an Nx Monorepo, inside contains the following:
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+### Applications
 
-Below are some plugins which you can add to your workspace:
+#### `web-ui`
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+The `web-ui` application is the React App.
 
-## Generate an application
+##### `web-ui-e2e`
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+The `web-ui-e2e` application is the setup for the UI Testing using Cypress.
 
-> You can use any of the plugins above to generate applications as well.
+#### `api` (todo)
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+The `api` is a yet-unused-but-fully-setup barebones NestJs application that exposes some authentication GraphQL endpoints. It is intended to use this api as another testable integration point for the React App.
 
-## Generate a library
+#### `ui-components-e2e` (todo)
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+The `ui-components-e2e` application is for UI test around the ui component library included in this Nx Monorepo.
 
-> You can also use any of the plugins above to generate libraries as well.
+### Libraries
 
-Libraries are sharable across libraries and applications. They can be imported from `@react-testing/mylib`.
+#### `ui-components`
 
-## Development server
+The `ui-components` library is to demonstrate setting up a reusable component library for the React application. By extracting the reusable components to a separate library, the `apps/web-ui` can have a narrower focus on business logic instead of presentational setup.
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+## Local Development
 
-## Code scaffolding
+Due to being an NX Monorepo, there is a single `package.json` entrypoint into the project at the root.
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+1. Ensure that you're using the correct version of Node via nvm by running `nvm use`. Please note you must have `nvm` installed.
+2. Run `yarn` to install the required dependencies. You'll have access to the standard Nx scripts as well we a few custom ones.
+3. Copy the `.envrc.example` to `.envrc`, you'll need to provide a valid `GITHUB_API_TOKEN` value in order for the integration tests to pass when they attempt to communicate with GitHub.
 
-## Build
+### Storybook
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Storybook has been setup as a visual reference for the component library and can be run using `yarn storybook`. This will serve Storybook for you to refer to.
 
-## Running unit tests
+![Storybook](docs/storybook.png)
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+### Testing
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+The repository has been built with a TDD philosphy. The unit tests can be run using `yarn test web-ui`, include `--watch` to enable watch mode.
 
-## Running end-to-end tests
+#### Coverage Reports
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+To receive a coverage report around the tests run `yarn test:web-ui:coverage`. The coverage reports hve been included in the CI pipeline and get commented on the related PR by using the repositories secret GitHub API Token.
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+The coverage report configuration and acceptable thresholds are configured in the root jest.config.js
 
-## Understand your workspace
+```
+  coverageReporters: ['html', 'lcov', 'text'],
+  coverageThreshold: {
+    global: {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: -40
+    }
+  }
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+```
 
-## Further help
+#### UI Testing - Cypress
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+To run the UI tests run `yarn e2e web-ui-e2e`, include `--watch` to enable watch mode with the live UI.
+
+### Continuous Integration
+
+Continuous Integration has been setup using GitHub Actions. You can refer to `.github/workflows/ci.yml` for the configuration.
