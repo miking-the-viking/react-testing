@@ -16,6 +16,13 @@ The project is scaffolded as an Nx Monorepo, inside contains the following:
 
 The `web-ui` application is the React App.
 
+##### Debugging
+
+There are two vscode debug configurations included
+
+- `Launch Chrome against localhost` will open a chrome instance to the running application that can be debugged
+- `Jest Tests` will execute the tests and stop on any breakpoints
+
 ##### `web-ui-e2e`
 
 The `web-ui-e2e` application is the setup for the UI Testing using Cypress.
