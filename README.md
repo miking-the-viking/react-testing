@@ -56,6 +56,21 @@ The repository has been built with a TDD philosphy. The unit tests can be run us
 
 To receive a coverage report around the tests run `yarn test:web-ui:coverage`. The coverage reports hve been included in the CI pipeline and get commented on the related PR by using the repositories secret GitHub API Token.
 
+The coverage report configuration and acceptable thresholds are configured in the root jest.config.js
+
+```
+  coverageReporters: ['html', 'lcov', 'text'],
+  coverageThreshold: {
+    global: {
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: -40
+    }
+  }
+
+```
+
 #### UI Testing - Cypress
 
 To run the UI tests run `yarn e2e web-ui-e2e`, include `--watch` to enable watch mode with the live UI.
